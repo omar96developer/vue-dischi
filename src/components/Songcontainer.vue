@@ -13,7 +13,7 @@
             </div>
         </div>
                 
-
+        <Loader v-if="loading === true"></Loader>
     </div>
     
 </template>
@@ -21,23 +21,30 @@
 <script>
 import axios from "axios";
 import Songcard from "./Songcard.vue";
+import Loader from "./Loader.vue";
 
 export default {
     name: 'Songcontainer',
     components: {
-    Songcard
+    Songcard,
+    Loader
   },
     data() {
         return {
             songList: '',
+            loading: true
         }
 
     },
     mounted() {
         axios.get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(resp => {
-            this.songList = resp.data.response
-            console.log(resp)
+            this.songList = resp.data.response;
+            console.log(resp);
+            setTimeout(() => {
+                this.loading = false;
+            }, 3000)
+            
         })
     }
 }
