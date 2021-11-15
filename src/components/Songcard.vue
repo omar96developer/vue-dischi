@@ -1,12 +1,12 @@
 <template>
     
-        <div class="card">
+        <div class="card p-3">
             <img  :src="image" class="card-img-top" alt="...">
 
             <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
-                <p class="card-text">{{author}}</p>
-                <p class="card-text">{{year}}</p>
+                <h5 class="card-title text-center text-uppercase">{{title}}</h5>
+                <p class="card-text mb-0 text-center">{{author}}</p>
+                <p class="card-text text-center">{{year}}</p>
             </div>
         </div> 
     

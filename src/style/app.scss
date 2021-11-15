@@ -1,9 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 
+@import "navapp.scss";
 @import "songcontainer.scss";
 @import "songcard.scss";
 @import "reset.scss";
 
 body {
-    min-height: 100vh;
+    
+    background-color: #192d3b;
 }

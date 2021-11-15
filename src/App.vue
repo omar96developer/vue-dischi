@@ -1,6 +1,8 @@
 <template>
     <div>
+      <Navapp></Navapp>
       <div class="container">
+        
         <Songcontainer></Songcontainer>
 
       </div>
@@ -10,10 +12,12 @@
 
 <script>
 import Songcontainer from './components/Songcontainer.vue'
+import Navapp from './components/Navapp.vue'
 
 export default {
   name: 'App',
   components: {
+    Navapp,
     Songcontainer
   }
 }
