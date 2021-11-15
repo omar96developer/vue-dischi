@@ -1,18 +1,32 @@
 <template>
     <div>
-        <h1>hjbsdiub</h1>
-        <div v-for="(song, i) in songList" :key="i">
-            {{song.title}}
+    
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+
+            <div class="col " v-for="(song, i) in songList" :key="i">
+                <Songcard 
+                :image="song.poster" 
+                :title="song.title" 
+                :author="song.author" 
+                :year="song.year"></Songcard>
+                
+            </div>
         </div>
+                
+
     </div>
     
 </template>
 
 <script>
 import axios from "axios";
+import Songcard from "./Songcard.vue";
 
 export default {
     name: 'Songcontainer',
+    components: {
+    Songcard
+  },
     data() {
         return {
             songList: '',
