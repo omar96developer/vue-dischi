@@ -1,6 +1,7 @@
 <template>
     <div>
-    
+        <Searchbar></Searchbar>
+        
         <div class="row row-cols-1 row-cols-md-5 gx-5 gy-4 pt-5 pb-5">
 
             <div class="col " v-for="(song, i) in songList" :key="i">
@@ -20,6 +21,7 @@
 
 <script>
 import axios from "axios";
+import Searchbar from './Searchbar.vue'
 import Songcard from "./Songcard.vue";
 import Loader from "./Loader.vue";
 
@@ -27,6 +29,7 @@ export default {
     name: 'Songcontainer',
     components: {
     Songcard,
+    Searchbar,
     Loader
   },
     data() {

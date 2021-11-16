@@ -2,17 +2,15 @@
     <div>
       <Navapp></Navapp>
       <div class="container">
-        
         <Songcontainer></Songcontainer>
-
       </div>
     </div>
   
 </template>
 
 <script>
-import Songcontainer from './components/Songcontainer.vue'
 import Navapp from './components/Navapp.vue'
+import Songcontainer from './components/Songcontainer.vue'
 
 
 export default {
