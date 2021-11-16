@@ -1,6 +1,7 @@
 <template>
     <div>
-        <Searchbar></Searchbar>
+        <Searchbar :genere="getSongGenre"></Searchbar>
+       {{getSongGenre()}}
         
         <div class="row row-cols-1 row-cols-md-5 gx-5 gy-4 pt-5 pb-5">
 
@@ -39,14 +40,29 @@ export default {
         }
 
     },
+    methods: {
+      getSongGenre(){
+          const songGenre = {};
+          this.songList.forEach((genere) =>{
+            const {genre} = genere;
+
+            if(songGenre[genre] === undefined) {
+                songGenre[genre] = 0;
+            }
+            songGenre[genre]++
+          });
+
+            return songGenre;
+          
+      }
+    },
     mounted() {
         axios.get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(resp => {
             this.songList = resp.data.response;
-            console.log(resp);
             setTimeout(() => {
                 this.loading = false;
-            }, 3000)
+            }, 1000)
             
         })
     }
