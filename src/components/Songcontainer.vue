@@ -1,70 +1,77 @@
 <template>
-    <div>
-        <Searchbar :genere="getSongGenre"></Searchbar>
-       {{getSongGenre()}}
-        
-        <div class="row row-cols-1 row-cols-md-5 gx-5 gy-4 pt-5 pb-5">
-
-            <div class="col " v-for="(song, i) in songList" :key="i">
-                <Songcard 
-                :image="song.poster" 
-                :title="song.title" 
-                :author="song.author" 
-                :year="song.year"></Songcard>
-                
-            </div>
+  <div class="display_song">
+    <Navapp></Navapp>
+    <div class="container py-5">
+      <Searchbar @search="filter" @lista="reset"></Searchbar>
+      <div class="row row-cols-5 g-4 pt-3">
+        <div class="col" v-for="(card, i) in filterlist" :key="i">
+          <Songcard
+            :image="card.poster"
+            :title="card.title"
+            :author="card.author"
+            :genre="card.genre"
+            :year="card.year"
+          ></Songcard>
         </div>
-                
-        <Loader v-if="loading === true"></Loader>
+      </div>
     </div>
     
+    <Loader v-if="loading === true"></Loader>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
-import Searchbar from './Searchbar.vue'
 import Songcard from "./Songcard.vue";
+import Searchbar from "./Searchbar.vue";
 import Loader from "./Loader.vue";
+import Navapp from "./Navapp.vue";
 
 export default {
-    name: 'Songcontainer',
-    components: {
+  name: "Songcontainer",
+  components: {
     Songcard,
     Searchbar,
-    Loader
+    Loader,
+    Navapp
   },
-    data() {
-        return {
-            songList: '',
-            loading: true
-        }
 
+  data() {
+    return {
+      songs: [],
+      genre: "",
+      loading: true,
+    };
+  },
+
+  methods: {
+    filter(genre) {
+      this.genre = genre;
     },
-    methods: {
-      getSongGenre(){
-          const songGenre = {};
-          this.songList.forEach((genere) =>{
-            const {genre} = genere;
-
-            if(songGenre[genre] === undefined) {
-                songGenre[genre] = 0;
-            }
-            songGenre[genre]++
-          });
-
-            return songGenre;
-          
-      }
-    },
-    mounted() {
-        axios.get("https://flynn.boolean.careers/exercises/api/array/music")
-        .then(resp => {
-            this.songList = resp.data.response;
-            setTimeout(() => {
-                this.loading = false;
-            }, 1000)
-            
-        })
+    reset() {
+        this.genre ="";
     }
-}
+  },
+
+  computed: {
+    filterlist() {
+      if (!this.genre) {
+        return this.songs;
+      }
+      return this.songs.filter(element => {
+        return element.genre.toLowerCase().includes(this.genre.toLowerCase().trim())
+      });
+    },
+  },
+
+  mounted() {
+    axios
+      .get("https://flynn.boolean.careers/exercises/api/array/music").then((resp) => {
+        this.songs.push(...resp.data.response);
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
+      });
+  },
+};
 </script>

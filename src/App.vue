@@ -1,29 +1,26 @@
 <template>
-    <div>
-      <Navapp></Navapp>
-      <div class="container">
-        <Songcontainer></Songcontainer>
-      </div>
-    </div>
+  <div id="app">
   
+  <main><Songcontainer></Songcontainer></main>
+   
+
+
+  </div>
 </template>
 
 <script>
-import Navapp from './components/Navapp.vue'
-import Songcontainer from './components/Songcontainer.vue'
+import Songcontainer from "./components/Songcontainer.vue"
 
 
 export default {
   name: 'App',
   components: {
-    Navapp,
     Songcontainer
-   
   }
 }
 </script>
 
 <style lang="scss">
-@import "@/style/app";
+@import "@/styles/app.scss";
 
 </style>

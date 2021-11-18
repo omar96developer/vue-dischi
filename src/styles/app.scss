@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/bootstrap";
+@import "reset.scss";
+@import "loader.scss";
+@import "navapp.scss";
+
+.display_song {
+    background-color: #192d3b;;
+
+    .container {
+        min-height: 100vh;
+        background-color: #192d3b;;
+    }
+
+    .card {
+        height: 400px;
+        background-color: #2b3a46;
+        cursor: pointer;
+        img {
+            height: 200px;
+        }
+        h5 {
+            color: white;
+        }
+        P {
+            color: #64747c;
+        }
+    }
+}
+
+
+
