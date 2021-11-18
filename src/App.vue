@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-  
   <main><Songcontainer></Songcontainer></main>
-   
-
-
   </div>
 </template>
 
