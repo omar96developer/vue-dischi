@@ -3,7 +3,7 @@
 Hello everybody!  
 
 
-In this project i created a script for filter by music genre , the relatives selected songs. 
+In this project i created a script for filter by music genre , the relatives songs. 
 
 Hope you like it 😁.
 
