@@ -10,6 +10,10 @@ Hope you like it 😁.
 Created with VUE JS
 
 
+## Demo
+
+
+https://user-images.githubusercontent.com/84162621/170794756-974d0507-708e-4567-a857-85c28308e2d4.mp4
 
 
 ## Screenshots
